@@ -1,0 +1,12 @@
+sip-file-client1:
+  image: 192.168.0.4:5000/sip-file
+  ports:
+    - "8001:4445"
+sip-file-client2:
+  image: 192.168.0.4:5000/sip-file
+  ports:
+    - "8002:4445"
+sip-file-client3:
+  image: 192.168.0.4:5000/sip-file
+  ports:
+    - "8003:4445"

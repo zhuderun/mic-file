@@ -1,0 +1,73 @@
+#端口
+server:
+    port: 4445
+# 驱动配置信息  
+spring:
+  datasource: 
+          type: com.alibaba.druid.pool.DruidDataSource  
+          url:  jdbc:mysql://192.168.0.64:3306/test?useUnicode=true&characterEncoding=utf-8  
+          username: root
+          password: root
+          driverClassName: com.mysql.jdbc.Driver  
+          initialSize: 1  
+          minIdle: 5  
+          maxActive: 20  
+          maxWait: 60000  
+          timeBetweenEvictionRunsMillis: 60000  
+          minEvictableIdleTimeMillis: 300000  
+          validationQuery: SELECT 1 FROM DUAL  
+          testWhileIdle: true  
+          testOnBorrow: false  
+          testOnReturn: false  
+          poolPreparedStatements: true  
+          maxPoolPreparedStatementPerConnectionSize: 20  
+          filters: stat,wall,log4j  
+          connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  application:
+           name: VirtualFile
+#  redis:
+#    host: 192.168.0.64
+#    port: 6379
+#    pool:
+#      max-idle: 8
+#      min-idle: 0
+#      max-active: 20
+           
+          
+druid: 
+    stat:
+       username: admin
+       password: admin 
+
+mybatis:
+    mapperLocations: classpath:mybatis/mapper/*.xml
+    typeAliasesPackage: com.haoyu.file.domain
+mapper:
+    mappers: com.haoyu.sip.mapper.BaseMapper
+    not-empty: false
+#   ORDER: BEFORE 
+#   IDENTITY: select uuid()
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+logging:
+    config: classpath:log4j2_dev.xml
+
+eureka:
+  client: 
+      serviceUrl: 
+            defaultZone: http://192.168.99.100:8761/eureka/,http://192.168.99.100:8762/eureka/
+  
+
+security: 
+     basic: 
+        enabled: false
+#security.user.name=admin
+#security.user.password=admin
+
+#swagger: 
+#    basePackage: com.haoyu.sip.datadict.controller
+#    version: 1
